@@ -1,0 +1,87 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install Backend Dependencies",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install"],
+      "options": {
+        "cwd": "${workspaceFolder}/backend",
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/s", "/c"]
+        }
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Install Frontend Dependencies",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install"],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend",
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/s", "/c"]
+        }
+      },
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Backend Server",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "options": {
+        "cwd": "${workspaceFolder}/backend",
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/s", "/c"]
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      }
+    },
+    {
+      "label": "Start Frontend Dev Server",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "dev"],
+      "options": {
+        "cwd": "${workspaceFolder}/frontend",
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/s", "/c"]
+        }
+      },
+      "isBackground": true,
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      }
+    },
+    {
+      "label": "Setup and Run Project",
+      "dependsOn": [
+        "Install Backend Dependencies",
+        "Install Frontend Dependencies",
+        "Start Backend Server",
+        "Start Frontend Dev Server"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
